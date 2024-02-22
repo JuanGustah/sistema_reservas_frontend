@@ -18,9 +18,6 @@ function Home() {
             <li>
               <Link to="/espaco">Espaços</Link>
             </li>
-            <li>
-              <Link to="/equipamentos">Equipamentos</Link>
-            </li>
           </>
         ) : null}
       </ul>

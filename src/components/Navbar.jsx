@@ -37,6 +37,9 @@ function Navbar() {
             <li>
               <Link to="/departamento">Departamento</Link>
             </li>
+            <li>
+              <Link to="/espaco">Espaços</Link>
+            </li>
           </>
         ) : null}
         <li>

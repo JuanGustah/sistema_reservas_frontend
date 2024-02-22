@@ -25,7 +25,24 @@ function Equipamentos() {
         equipamentos.filter((equipamento) => equipamento.id !== id)
       );
     } catch (error) {
-      alert("Não foi possível apagar essa reserva");
+      alert("Não foi possível apagar esse equipamento");
+    }
+  }
+
+  async function trocarStatusEquipamento(id) {
+    try {
+      await api.post("equipamentos/status/" + id);
+      setEquipamentos(
+        equipamentos.map((equipamento) => {
+          if (equipamento.id === id) {
+            equipamento.status = !equipamento.status;
+          }
+
+          return equipamento;
+        })
+      );
+    } catch (error) {
+      alert("Não foi possível alterar status desse equipamento");
     }
   }
 
@@ -72,7 +89,13 @@ function Equipamentos() {
                 >
                   Editar
                 </button>
-                <button>Desabilitar</button>
+                <button
+                  onClick={() => {
+                    trocarStatusEquipamento(equipamento.id);
+                  }}
+                >
+                  {equipamento.status ? "Desabiltiar" : "Habilitar"}
+                </button>
               </td>
             </tr>
           ))}

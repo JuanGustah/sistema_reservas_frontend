@@ -28,8 +28,12 @@ function NovaReserva() {
     try {
       await api.post("reservas", data2);
       navigate("/reserva");
-    } catch (e) {
-      console.log(e);
+    } catch (erro) {
+      if (erro.response.status == 409) {
+        return alert(
+          "Espaço já foi reservado por outro usuário neste horário."
+        );
+      }
       alert("Algo errado aconteceu.");
     }
   }
